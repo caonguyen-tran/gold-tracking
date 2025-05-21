@@ -1,0 +1,23 @@
+services:
+  mongodb:
+    image: 'bitnami/mongodb:8.0.1'
+    container_name: mongodb
+    hostname: mongodb
+    environment:
+      MONGODB_ROOT_USERNAME: root
+      MONGODB_ROOT_PASSWORD: Admin@123
+    ports:
+      - '27019:27017'
+    volumes:
+      - mongo_data:/data/db
+    networks:
+      - app_network
+
+volumes:
+  mysql_data:
+  mongo_data:
+
+networks:
+  app_network:
+    driver: bridge
+    external: true
